@@ -35,7 +35,7 @@ type Site = {
 
 export const site: Site = {
   name: "Rémi Morien",
-  url: "https://portfolio-ten-ivory-64.vercel.app",
+  url: "https://remimorien.com",
   email: "remi.morien@gmail.com",
   role: {
     fr: "Vidéaste, photographe & motion designer",
