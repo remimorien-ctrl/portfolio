@@ -61,7 +61,7 @@ export const experiences: Experience[] = [
     track: "video",
     period: { fr: "2023 – auj.", en: "2023 – now" },
     title: { fr: "Vidéaste & photographe freelance", en: "Freelance filmmaker & photographer" },
-    company: { fr: "Indépendant · Lyon et déplacements", en: "Self-employed · Lyon and travel" },
+    company: { fr: "Indépendant · Paris et déplacements", en: "Self-employed · Paris and travel" },
     points: {
       fr: [
         "Films de marque et contenus réseaux pour une quinzaine de clients (mode, food, culture).",
@@ -79,7 +79,7 @@ export const experiences: Experience[] = [
     track: "video",
     period: { fr: "2021 – 2023", en: "2021 – 2023" },
     title: { fr: "Monteur & cadreur", en: "Editor & camera operator" },
-    company: { fr: "Agence de communication · Lyon", en: "Communications agency · Lyon" },
+    company: { fr: "Agence de communication · Paris", en: "Communications agency · Paris" },
     points: {
       fr: [
         "Tournage et montage d'une centaine de vidéos courtes pour les réseaux des clients.",
@@ -95,7 +95,7 @@ export const experiences: Experience[] = [
     track: "photo",
     period: { fr: "Janv. – juin 2021", en: "Jan – Jun 2021" },
     title: { fr: "Assistant photographe (stage)", en: "Photography assistant (internship)" },
-    company: { fr: "Studio photo · Lyon", en: "Photo studio · Lyon" },
+    company: { fr: "Studio photo · Paris", en: "Photo studio · Paris" },
     points: {
       fr: ["Lumières et assistance sur les shootings mode et produit, retouche des séries."],
       en: ["Lighting and assistance on fashion and product shoots, retouching."],
@@ -105,7 +105,7 @@ export const experiences: Experience[] = [
     track: "education",
     period: { fr: "2019 – 2021", en: "2019 – 2021" },
     title: { fr: "BTS Métiers de l'audiovisuel, option image", en: "Vocational degree in audiovisual production (camera)" },
-    company: { fr: "Lycée (à compléter) · Lyon", en: "School (to be completed) · Lyon" },
+    company: { fr: "Lycée (à compléter) · Paris", en: "School (to be completed) · Paris" },
     points: {
       fr: ["Court-métrage de fin d'études en tant que chef opérateur."],
       en: ["Graduation short film as director of photography."],

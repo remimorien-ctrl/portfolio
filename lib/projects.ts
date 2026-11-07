@@ -80,7 +80,7 @@ function exampleProject(
 export const projects: Project[] = [
   exampleProject("film-de-marque", "video", 2026,
     { fr: "Film de marque", en: "Brand film" },
-    { fr: "Un film de 90 secondes pour une marque de mode lyonnaise.", en: "A 90-second film for a Lyon fashion brand." }),
+    { fr: "Un film de 90 secondes pour une marque de mode parisienne.", en: "A 90-second film for a Paris fashion brand." }),
   exampleProject("aftermovie-festival", "video", 2025,
     { fr: "Aftermovie de festival", en: "Festival aftermovie" },
     { fr: "Trois jours de tournage multicam, montage livré en 72 h.", en: "Three days of multicam shooting, edit delivered in 72 h." }),
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     { fr: "Couverture photo d'une tournée de concerts.", en: "Photo coverage of a concert tour." }),
   exampleProject("clip-musical", "video", 2024,
     { fr: "Clip musical", en: "Music video" },
-    { fr: "Clip tourné en une nuit dans les rues de Lyon.", en: "A music video shot in one night in the streets of Lyon." }),
+    { fr: "Clip tourné en une nuit dans les rues de Paris.", en: "A music video shot in one night in the streets of Paris." }),
   exampleProject("logo-anime", "motion", 2024,
     { fr: "Logo animé", en: "Logo animation" },
     { fr: "Animation de logo pour une agence de communication.", en: "Logo animation for a communications agency." }),

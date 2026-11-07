@@ -50,16 +50,16 @@ export const site: Site = {
   url: "https://remimorien.com",
   email: "remi.morien@gmail.com",
   location: {
-    fr: "Lyon · mobile partout en France",
-    en: "Lyon, France · willing to relocate",
+    fr: "Paris · mobile partout en France",
+    en: "Paris, France · willing to relocate",
   },
   role: {
     fr: "Vidéaste, photographe & motion designer",
     en: "Filmmaker, photographer & motion designer",
   },
   description: {
-    fr: "Rémi Morien, vidéaste, photographe et motion designer basé à Lyon. Portfolio, parcours et contact.",
-    en: "Rémi Morien, filmmaker, photographer and motion designer based in Lyon, France. Portfolio, experience and contact.",
+    fr: "Rémi Morien, vidéaste, photographe et motion designer basé à Paris. Portfolio, parcours et contact.",
+    en: "Rémi Morien, filmmaker, photographer and motion designer based in Paris, France. Portfolio, experience and contact.",
   },
   tags: {
     fr: ["Vidéaste", "Photographe", "Motion designer"],

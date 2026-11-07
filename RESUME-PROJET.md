@@ -1,7 +1,7 @@
 # Contexte : mon site portfolio remimorien.com
 
 ## Qui je suis et le but du site
-Je suis Rémi Morien, vidéaste, photographe et motion designer, basé à Lyon. Le site est un portfolio bilingue FR/EN qui doit m'aider à décrocher un CDI : il s'adresse aux recruteurs.
+Je suis Rémi Morien, vidéaste, photographe et motion designer, basé à Paris. Le site est un portfolio bilingue FR/EN qui doit m'aider à décrocher un CDI : il s'adresse aux recruteurs.
 
 ## Technique (reprise exacte de mon autre site)
 - Next.js 16.4 (App Router, build avec `next build --webpack`, sans Turbopack), React 19, TypeScript strict, npm.
