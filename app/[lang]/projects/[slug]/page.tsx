@@ -38,9 +38,9 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/project
   const title = project.title[lang];
 
   return (
-    <article className="project">
+    <article className="container project">
       <p>
-        <Link href={href(lang, "/projects")}>← {dict.project.back}</Link>
+        <Link href={`${href(lang)}#work`}>← {dict.project.back}</Link>
       </p>
       <h1>{title}</h1>
       <p className="lead">{project.summary[lang]}</p>

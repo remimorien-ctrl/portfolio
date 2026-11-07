@@ -1,16 +1,30 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Bricolage_Grotesque, DM_Mono, Instrument_Sans } from "next/font/google";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "@/lib/fontawesome";
 import "../globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { alternates, getLang, locales } from "@/lib/i18n";
-import { site } from "@/lib/site";
+import { fullName, site } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Polices de la charte : titres, texte courant, détails techniques.
+const titre = Bricolage_Grotesque({
+  variable: "--nf-titre",
   subsets: ["latin"],
+  weight: ["600", "800"],
+});
+
+const texte = Instrument_Sans({
+  variable: "--nf-texte",
+  subsets: ["latin"],
+  weight: ["400", "600"],
+});
+
+const mono = DM_Mono({
+  variable: "--nf-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 // Seules /fr et /en existent, générées au build.
@@ -25,13 +39,13 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   return {
     metadataBase: new URL(site.url),
     title: {
-      default: `${site.name} — ${site.role[lang]}`,
-      template: `%s — ${site.name}`,
+      default: `${fullName} — ${site.role[lang]}`,
+      template: `%s — ${fullName}`,
     },
     description: site.description[lang],
     alternates: alternates(lang),
     openGraph: {
-      siteName: site.name,
+      siteName: fullName,
       locale: lang === "fr" ? "fr_FR" : "en_US",
       type: "website",
     },
@@ -42,7 +56,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   const lang = await getLang(params);
 
   return (
-    <html lang={lang} className={geistSans.variable}>
+    <html lang={lang} className={`${titre.variable} ${texte.variable} ${mono.variable}`}>
       <body>
         <Header lang={lang} />
         <main>{children}</main>

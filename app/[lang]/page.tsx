@@ -1,10 +1,9 @@
-import Link from "next/link";
-import { ProjectCard } from "@/components/ProjectCard";
-import { VideoEmbed } from "@/components/VideoEmbed";
+import { Hero } from "@/components/Hero";
+import { ProjectGrid } from "@/components/ProjectGrid";
+import { SectionTitle } from "@/components/SectionTitle";
 import { getDictionary } from "@/lib/dictionaries";
-import { getLang, href } from "@/lib/i18n";
-import { featuredProjects, localizeProject } from "@/lib/projects";
-import { site } from "@/lib/site";
+import { getLang } from "@/lib/i18n";
+import { categories, categoryLabels, localizeProject, projects } from "@/lib/projects";
 
 export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const lang = await getLang(params);
@@ -12,35 +11,22 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
   return (
     <>
-      <section className="hero">
-        <h1>{site.name}</h1>
-        <p className="muted">{site.role[lang]}</p>
-      </section>
+      <Hero lang={lang} />
 
-      {site.showreel && (
-        <section>
-          <h2>{dict.home.showreel}</h2>
-          <VideoEmbed video={site.showreel} title={`${dict.home.showreel} — ${site.name}`} />
-        </section>
-      )}
-
-      <section>
-        <h2>{dict.home.featured}</h2>
-        <div className="project-grid">
-          {featuredProjects.map((p) => (
-            <ProjectCard key={p.slug} project={localizeProject(p, lang)} lang={lang} />
-          ))}
+      <section id="work" className="section">
+        <div className="container">
+          <SectionTitle>{dict.work.title}</SectionTitle>
+          <p className="lead">{dict.work.intro}</p>
+          <ProjectGrid
+            lang={lang}
+            projects={projects.map((p) => localizeProject(p, lang))}
+            filters={categories
+              .filter((c) => projects.some((p) => p.category === c))
+              .map((c) => ({ value: c, label: categoryLabels[c][lang] }))}
+            allLabel={dict.work.all}
+            emptyLabel={dict.work.empty}
+          />
         </div>
-        <p>
-          <Link href={href(lang, "/projects")}>{dict.home.allProjects} →</Link>
-        </p>
-      </section>
-
-      <section className="cta">
-        <h2>{dict.home.ctaTitle}</h2>
-        <Link href={href(lang, "/contact")} className="button">
-          {dict.home.ctaButton}
-        </Link>
       </section>
     </>
   );

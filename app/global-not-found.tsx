@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
-import { site } from "@/lib/site";
+import { fullName } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `404 — ${site.name}`,
+  title: `404 — ${fullName}`,
 };
 
 // Page 404 globale : on ne connaît pas la langue, donc message bilingue.

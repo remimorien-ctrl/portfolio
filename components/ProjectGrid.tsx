@@ -21,12 +21,13 @@ export function ProjectGrid({ lang, projects, filters, allLabel, emptyLabel }: P
   return (
     <>
       <div className="filters" role="group">
-        <button aria-pressed={active === null} onClick={() => setActive(null)}>
+        <button className="pill" aria-pressed={active === null} onClick={() => setActive(null)}>
           {allLabel}
         </button>
         {filters.map((f) => (
           <button
             key={f.value}
+            className="pill"
             aria-pressed={active === f.value}
             onClick={() => setActive(f.value)}
           >

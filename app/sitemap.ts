@@ -4,7 +4,7 @@ import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["", "/projects", "/about", "/contact", ...projects.map((p) => `/projects/${p.slug}`)];
+  const paths = ["", "/about", ...projects.map((p) => `/projects/${p.slug}`)];
 
   return paths.flatMap((path) =>
     locales.map((lang) => ({

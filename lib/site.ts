@@ -6,7 +6,6 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import type { Localized } from "./i18n";
-import type { Image, Video } from "./projects";
 
 type Social = {
   label: string;
@@ -14,47 +13,61 @@ type Social = {
   icon: IconDefinition;
 };
 
+/**
+ * Showreel en fond de l'accueil, lu en boucle et sans le son.
+ * - "file" : fichier MP4 dans /public (le plus fiable : pas de logo ni de boutons de lecteur)
+ * - "vimeo" : vidéo Vimeo en mode arrière-plan
+ */
+export type Showreel =
+  | { kind: "file"; src: string; poster?: string }
+  | { kind: "vimeo"; id: string };
+
 type Site = {
-  name: string;
-  /** URL de production (sitemap, balises SEO). À mettre à jour une fois le domaine connu. */
+  firstName: string;
+  lastName: string;
+  /** URL de production (sitemap, balises SEO). */
   url: string;
   email: string;
+  /** Affiché seulement s'il est renseigné. */
+  phone?: string;
+  location: Localized;
   role: Localized;
   description: Localized;
-  /** Showreel affiché en page d'accueil (masqué si absent). */
-  showreel?: Video;
-  about: {
-    bio: Localized<string[]>;
-    portrait?: Image;
-    services: Localized<string[]>;
-    clients: string[];
-  };
+  /** Étiquettes sous le nom (comme sur le CV). */
+  tags: Localized<string[]>;
+  /** Mise en avant de la disponibilité. Masquée si absente. */
+  availability?: Localized;
+  showreel?: Showreel;
+  /** CV en PDF dans /public, par langue. Le bouton est masqué si absent. */
+  cv?: Partial<Localized>;
   /** Un réseau dont l'URL est vide n'est pas affiché. */
   socials: Social[];
 };
 
 export const site: Site = {
-  name: "Rémi Morien",
+  firstName: "Rémi",
+  lastName: "Morien",
   url: "https://remimorien.com",
   email: "remi.morien@gmail.com",
+  location: {
+    fr: "Lyon · mobile partout en France",
+    en: "Lyon, France · willing to relocate",
+  },
   role: {
     fr: "Vidéaste, photographe & motion designer",
     en: "Filmmaker, photographer & motion designer",
   },
   description: {
-    fr: "Portfolio de Rémi Morien : vidéo, photographie et motion design.",
-    en: "Rémi Morien's portfolio: video, photography and motion design.",
+    fr: "Rémi Morien, vidéaste, photographe et motion designer basé à Lyon. Portfolio, parcours et contact.",
+    en: "Rémi Morien, filmmaker, photographer and motion designer based in Lyon, France. Portfolio, experience and contact.",
   },
-  about: {
-    bio: {
-      fr: ["Texte de présentation à rédiger : parcours, approche, ce qui vous anime."],
-      en: ["Bio to be written: background, approach, what drives you."],
-    },
-    services: {
-      fr: ["Réalisation vidéo", "Photographie", "Motion design", "Montage & étalonnage"],
-      en: ["Video production", "Photography", "Motion design", "Editing & colour grading"],
-    },
-    clients: [],
+  tags: {
+    fr: ["Vidéaste", "Photographe", "Motion designer"],
+    en: ["Filmmaker", "Photographer", "Motion designer"],
+  },
+  availability: {
+    fr: "Disponible · CDI",
+    en: "Open to full-time roles",
   },
   socials: [
     { label: "Instagram", url: "", icon: faInstagram },
@@ -63,5 +76,7 @@ export const site: Site = {
     { label: "LinkedIn", url: "", icon: faLinkedin },
   ],
 };
+
+export const fullName = `${site.firstName} ${site.lastName}`;
 
 export const activeSocials = site.socials.filter((s) => s.url);

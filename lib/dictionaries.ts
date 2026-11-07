@@ -1,25 +1,43 @@
 import type { Locale } from "./i18n";
 
-// Textes fixes de l'interface. Le contenu (projets, bio…) est dans site.ts et projects.ts.
+// Textes fixes de l'interface. Le contenu est dans site.ts, profile.ts et projects.ts.
 const fr = {
   nav: {
-    home: "Accueil",
-    projects: "Projets",
-    about: "À propos",
+    work: "Projets",
+    about: "Moi",
+    experience: "Parcours",
+    skills: "Compétences",
     contact: "Contact",
   },
-  home: {
-    showreel: "Showreel",
-    featured: "Projets à la une",
-    allProjects: "Voir tous les projets",
-    ctaTitle: "Un projet en tête ?",
-    ctaButton: "Me contacter",
+  hero: {
+    seeWork: "Voir mes projets",
+    downloadCv: "Télécharger mon CV",
   },
-  projects: {
+  work: {
     title: "Projets",
     intro: "Une sélection de mes réalisations en vidéo, photo et motion design.",
     all: "Tous",
     empty: "Aucun projet dans cette catégorie pour le moment.",
+  },
+  about: {
+    title: "Moi",
+  },
+  experience: {
+    title: "Parcours",
+  },
+  skills: {
+    title: "Compétences",
+    software: "Logiciels",
+    gear: "Matériel",
+    more: "Et aussi",
+  },
+  contact: {
+    title: "Travaillons ensemble",
+    intro: "Je cherche un poste en CDI dans une équipe créative. Écrivez-moi, je réponds vite.",
+    email: "Email",
+    phone: "Téléphone",
+    location: "Basé à",
+    downloadCv: "Télécharger mon CV",
   },
   project: {
     client: "Client",
@@ -31,20 +49,10 @@ const fr = {
     next: "Projet suivant",
     back: "Tous les projets",
   },
-  about: {
-    title: "À propos",
-    services: "Services",
-    clients: "Ils m'ont fait confiance",
-  },
-  contact: {
-    title: "Contact",
-    intro: "Pour un devis, une collaboration ou simplement une question, écrivez-moi.",
-    email: "Email",
-    socials: "Réseaux",
-  },
   footer: {
     rights: "Tous droits réservés.",
   },
+  menu: "Menu",
   languageSwitcher: "Changer de langue",
 };
 
@@ -52,23 +60,41 @@ export type Dictionary = typeof fr;
 
 const en: Dictionary = {
   nav: {
-    home: "Home",
-    projects: "Work",
+    work: "Work",
     about: "About",
+    experience: "Experience",
+    skills: "Skills",
     contact: "Contact",
   },
-  home: {
-    showreel: "Showreel",
-    featured: "Featured work",
-    allProjects: "See all projects",
-    ctaTitle: "Have a project in mind?",
-    ctaButton: "Get in touch",
+  hero: {
+    seeWork: "See my work",
+    downloadCv: "Download my resume",
   },
-  projects: {
+  work: {
     title: "Work",
     intro: "A selection of my video, photography and motion design work.",
     all: "All",
     empty: "No projects in this category yet.",
+  },
+  about: {
+    title: "About",
+  },
+  experience: {
+    title: "Experience",
+  },
+  skills: {
+    title: "Skills",
+    software: "Software",
+    gear: "Gear",
+    more: "Also",
+  },
+  contact: {
+    title: "Let's work together",
+    intro: "I'm looking for a full-time position in a creative team. Drop me a line, I reply fast.",
+    email: "Email",
+    phone: "Phone",
+    location: "Based in",
+    downloadCv: "Download my resume",
   },
   project: {
     client: "Client",
@@ -80,20 +106,10 @@ const en: Dictionary = {
     next: "Next project",
     back: "All projects",
   },
-  about: {
-    title: "About",
-    services: "Services",
-    clients: "Clients",
-  },
-  contact: {
-    title: "Contact",
-    intro: "For a quote, a collaboration or just a question, drop me a line.",
-    email: "Email",
-    socials: "Social",
-  },
   footer: {
     rights: "All rights reserved.",
   },
+  menu: "Menu",
   languageSwitcher: "Change language",
 };
 
