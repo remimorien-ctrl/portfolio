@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/i18n";
 import { timeline, trackLabels, type Track } from "@/lib/profile";
 
-const tracks: Track[] = ["video", "photo", "education"];
+const tracks: Track[] = ["job", "freelance", "education"];
 
 /** Frise des années, reprise du CV : une ligne par piste, une barre par période. */
 export function Timeline({ lang }: { lang: Locale }) {

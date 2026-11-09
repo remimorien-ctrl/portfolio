@@ -49,6 +49,7 @@ export const site: Site = {
   lastName: "Morien",
   url: "https://remimorien.com",
   email: "remi.morien@gmail.com",
+  phone: "+33 7 77 72 73 85",
   location: {
     fr: "Paris · mobile partout en France",
     en: "Paris, France · willing to relocate",
@@ -62,13 +63,15 @@ export const site: Site = {
     en: "Rémi Morien, filmmaker, photographer and motion designer based in Paris, France. Portfolio, experience and contact.",
   },
   tags: {
-    fr: ["Vidéaste", "Photographe", "Motion designer"],
-    en: ["Filmmaker", "Photographer", "Motion designer"],
+    fr: ["Vidéaste", "Photographe", "6 ans d'expérience"],
+    en: ["Filmmaker", "Photographer", "6 years' experience"],
   },
   availability: {
     fr: "Disponible · CDI",
     en: "Open to full-time roles",
   },
+  // CV en français uniquement pour l'instant : le bouton est masqué sur la version anglaise.
+  cv: { fr: "/cv-remi-morien.pdf" },
   socials: [
     { label: "Instagram", url: "", icon: faInstagram },
     { label: "Vimeo", url: "", icon: faVimeoV },

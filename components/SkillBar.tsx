@@ -1,4 +1,4 @@
-const SEGMENTS = 10;
+const SEGMENTS = 12;
 
 // Jauge segmentée du CV : les segments passent du Soleil à la Braise.
 export function SkillBar({ name, level }: { name: string; level: number }) {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -6,7 +7,7 @@ import { SkillBar } from "@/components/SkillBar";
 import { Timeline } from "@/components/Timeline";
 import { getDictionary } from "@/lib/dictionaries";
 import { alternates, getLang } from "@/lib/i18n";
-import { about, experiences, extras, gear, skills, software, timeline, trackLabels } from "@/lib/profile";
+import { about, experiences, extras, gear, gearNote, skills, software, timeline, trackLabels } from "@/lib/profile";
 import { activeSocials, site } from "@/lib/site";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/about">): Promise<Metadata> {
@@ -29,15 +30,22 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
       <section id="about" className="section">
         <div className="container">
           <SectionTitle>{dict.about.title}</SectionTitle>
-          <p className="headline">
-            {headline.before}
-            <span className="highlight">{headline.highlight}</span>
-            {headline.after}
-          </p>
-          <div className="prose">
-            {about.bio[lang].map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+          <div className="about-layout">
+            <div>
+              <p className="headline">
+                {headline.before}
+                <span className="highlight">{headline.highlight}</span>
+                {headline.after}
+              </p>
+              <div className="prose">
+                {about.bio[lang].map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            </div>
+            <figure className="portrait">
+              <Image src={about.photo} alt={`${site.firstName} ${site.lastName}`} width={800} height={1000} sizes="(max-width: 800px) 280px, 320px" priority />
+            </figure>
           </div>
           <ul className="qualities">
             {about.qualities.map((q) => (
@@ -103,6 +111,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
                     {g}
                   </li>
                 ))}
+                <li className="chip chip-muted">{gearNote[lang]}</li>
               </ul>
               <h3 className="mini-title">{dict.skills.more}</h3>
               <ul className="mono extras">
