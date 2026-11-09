@@ -20,7 +20,7 @@ export const about = {
     ],
   } satisfies Localized<string[]>,
   /** Photo de la page « Moi » (détourée, posée sur le dégradé du logo). */
-  photo: "/remi-morien-portrait.webp",
+  photo: "/remi-morien-portrait-v2.webp",
   qualities: [
     {
       title: { fr: "Œil", en: "Eye" },
