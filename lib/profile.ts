@@ -91,11 +91,13 @@ export const experiences: Experience[] = [
         "Contenus BtoB vidéo et photo pour développer la franchise en France et à l'international.",
         "Couverture des événements internes et externes de l'entreprise et des marques du groupe.",
         "Portraits corporate des collaborateurs et des partenaires.",
+        "Réalisation de vidéos style « Real Estate » en format Reels et Shorts.",
       ],
       en: [
         "B2B video and photo content to grow the franchise in France and abroad.",
         "Coverage of internal and external events for the company and the group's brands.",
         "Corporate portraits of employees and partners.",
+        "Real estate-style videos for Reels and Shorts.",
       ],
     },
   },
@@ -115,8 +117,14 @@ export const experiences: Experience[] = [
     title: { fr: "Designer multimédia en alternance", en: "Multimedia designer (work-study)" },
     company: { fr: "Mutuelle Just · Valenciennes", en: "Mutuelle Just · Valenciennes, France" },
     points: {
-      fr: ["Lumières et assistance sur les shootings mode et produit, retouche des séries."],
-      en: ["Lighting and assistance on fashion and product shoots, retouching."],
+      fr: [
+        "Réflexion, organisation, tournage et montage de vidéos pour l'interne et l'externe.",
+        "Création de différents supports de communication, en accord avec l'équipe communication.",
+      ],
+      en: [
+        "Planned, organised, shot and edited videos for internal and external audiences.",
+        "Designed a range of communication materials together with the communications team.",
+      ],
     },
   },
   {
@@ -124,10 +132,7 @@ export const experiences: Experience[] = [
     period: { fr: "2017 – 2022", en: "2017 – 2022" },
     title: { fr: "Master Direction artistique", en: "Master's degree in Art Direction" },
     company: { fr: "e-artsup · Lille", en: "e-artsup · Lille, France" },
-    points: {
-      fr: ["Court-métrage de fin d'études en tant que chef opérateur."],
-      en: ["Graduation short film as director of photography."],
-    },
+    points: { fr: [], en: [] },
   },
 ];
 
