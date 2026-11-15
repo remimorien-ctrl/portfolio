@@ -33,7 +33,8 @@ export type Project = {
   slug: string;
   title: Localized;
   category: ProjectCategory;
-  year: number;
+  /** Année de mise en ligne ; une période (« 2024–2025 ») quand les vidéos s'étalent sur plusieurs années. */
+  year: number | string;
   client?: string;
   role?: Localized;
   summary: Localized;
@@ -185,7 +186,7 @@ const allProjects: Project[] = [
     slug: "realisations-chantiers",
     title: { fr: "Réalisations chantiers", en: "Renovation showcases" },
     category: "video",
-    year: 2025,
+    year: "2024–2025",
     client: "Avenir Rénovations",
     role: ROLE_VIDEO,
     summary: {
@@ -233,7 +234,7 @@ const allProjects: Project[] = [
     slug: "artitour",
     title: { fr: "ArtiTour", en: "ArtiTour" },
     category: "video",
-    year: 2025,
+    year: "2024–2025",
     client: "ArtiBox",
     role: ROLE_VIDEO,
     summary: {
