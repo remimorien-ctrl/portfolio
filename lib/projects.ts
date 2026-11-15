@@ -1,3 +1,4 @@
+import { albums } from "./albums";
 import type { Locale, Localized } from "./i18n";
 
 export const categories = ["video", "photo", "motion"] as const;
@@ -69,6 +70,20 @@ const ROLE_VIDEO: Localized = {
 };
 
 // L'ordre du tableau est l'ordre d'affichage.
+const ROLE_PHOTO: Localized = {
+  fr: "Prise de vue, sélection, retouche et étalonnage photo",
+  en: "Photography, selection, retouching and colour grading",
+};
+
+/** Album photo : la première image sert de couverture, les suivantes forment la galerie. */
+function album(slug: keyof typeof albums, name: Localized): { cover: Image; gallery: Image[] } {
+  const imgs = albums[slug].map((img, i) => ({
+    ...img,
+    alt: { fr: `${name.fr}, photo ${i + 1}`, en: `${name.en}, photo ${i + 1}` },
+  }));
+  return { cover: imgs[0], gallery: imgs.slice(1) };
+}
+
 export const projects: Project[] = [
   {
     slug: "24h-chrono-kevin-louis",
@@ -343,6 +358,111 @@ export const projects: Project[] = [
     },
     video: yt("byCirbWxnLU"),
     cover: ytCover("byCirbWxnLU", { fr: "Les animateurs réseau", en: "The network coaches" }),
+  },
+  // ——— Photo ———
+  {
+    slug: "convention-2026-marrakech",
+    title: { fr: "Convention 2026 · Agafay & Nouba", en: "2026 Convention · Agafay & Nouba" },
+    category: "photo",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_PHOTO,
+    summary: {
+      fr: "Reportage photo de la convention annuelle du réseau au Maroc : désert d'Agafay, cérémonie et soirée.",
+      en: "Photo coverage of the network's annual convention in Morocco: the Agafay desert, the ceremony and the party.",
+    },
+    description: {
+      fr: ["Plusieurs jours de couverture en continu, du séminaire aux soirées, avec une sélection livrée au fil de l'événement pour la communication interne et les réseaux sociaux."],
+      en: ["Several days of continuous coverage, from the seminar to the evenings, with selections delivered during the event for internal communication and social media."],
+    },
+    ...album("convention-2026-marrakech", { fr: "Convention 2026", en: "2026 Convention" }),
+  },
+  {
+    slug: "mariage-samira-yacine",
+    title: { fr: "Mariage · Samira & Yacine", en: "Wedding · Samira & Yacine" },
+    category: "photo",
+    year: 2024,
+    role: ROLE_PHOTO,
+    summary: {
+      fr: "Photographies de mariage, des préparatifs à la soirée, réalisées en parallèle du film.",
+      en: "Wedding photography, from the preparations to the party, shot alongside the wedding film.",
+    },
+    ...album("mariage-samira-yacine", { fr: "Mariage de Samira et Yacine", en: "Samira and Yacine's wedding" }),
+  },
+  {
+    slug: "convention-2024-paris",
+    title: { fr: "Convention 2024 · Cérémonie & croisière", en: "2024 Convention · Ceremony & cruise" },
+    category: "photo",
+    year: 2024,
+    client: "Avenir Rénovations",
+    role: ROLE_PHOTO,
+    summary: {
+      fr: "Remise des trophées du réseau puis soirée en croisière sur la Seine, à Paris.",
+      en: "The network's awards ceremony, followed by an evening cruise on the Seine in Paris.",
+    },
+    ...album("convention-2024-paris", { fr: "Convention 2024", en: "2024 Convention" }),
+  },
+  {
+    slug: "convention-2023-10-ans",
+    title: { fr: "Convention 2023 · 10 ans", en: "2023 Convention · 10th anniversary" },
+    category: "photo",
+    year: 2023,
+    client: "Avenir Rénovations",
+    role: ROLE_PHOTO,
+    summary: {
+      fr: "Les 10 ans du réseau : scène, remises de prix, photocall et soirée.",
+      en: "The network's 10th anniversary: stage, awards, photo booth and party.",
+    },
+    ...album("convention-2023-10-ans", { fr: "Convention 2023", en: "2023 Convention" }),
+  },
+  {
+    slug: "avant-premiere-artibox",
+    title: { fr: "ArtiBox · Avant-première", en: "ArtiBox · Premiere night" },
+    category: "photo",
+    year: 2024,
+    client: "ArtiBox",
+    role: ROLE_PHOTO,
+    summary: {
+      fr: "Soirée de lancement d'ArtiBox dans une salle de cinéma : accueil, keynote et cocktail.",
+      en: "ArtiBox's launch night in a cinema: welcome, keynote and cocktail reception.",
+    },
+    ...album("avant-premiere-artibox", { fr: "Avant-première ArtiBox", en: "ArtiBox premiere night" }),
+  },
+  {
+    slug: "portraits-studio",
+    title: { fr: "Portraits studio", en: "Studio portraits" },
+    category: "photo",
+    year: 2026,
+    role: { fr: "Éclairage, prise de vue, retouche", en: "Lighting, photography, retouching" },
+    summary: {
+      fr: "Séance portrait en studio, sur fonds colorés, avec un éclairage doux.",
+      en: "A studio portrait session on coloured backdrops with soft lighting.",
+    },
+    ...album("portraits-studio", { fr: "Portrait studio", en: "Studio portrait" }),
+  },
+  {
+    slug: "salon-du-bourget",
+    title: { fr: "Salon du Bourget", en: "Paris Air Show" },
+    category: "photo",
+    year: 2023,
+    role: { fr: "Prise de vue, retouche", en: "Photography, retouching" },
+    summary: {
+      fr: "Série personnelle au Salon international de l'aéronautique : avions, détails et Patrouille de France.",
+      en: "A personal series at the Paris Air Show: aircraft, details and the Patrouille de France.",
+    },
+    ...album("salon-du-bourget", { fr: "Salon du Bourget", en: "Paris Air Show" }),
+  },
+  {
+    slug: "saint-malo",
+    title: { fr: "Saint-Malo", en: "Saint-Malo" },
+    category: "photo",
+    year: 2023,
+    role: { fr: "Prise de vue, retouche", en: "Photography, retouching" },
+    summary: {
+      fr: "Série de voyage entre Saint-Malo et la baie du Mont-Saint-Michel : lumière de fin de journée, côte et ruelles.",
+      en: "A travel series between Saint-Malo and the Mont-Saint-Michel bay: late-afternoon light, coastline and streets.",
+    },
+    ...album("saint-malo", { fr: "Saint-Malo", en: "Saint-Malo" }),
   },
 ];
 
