@@ -57,7 +57,11 @@ function ytCover(id: string, alt: Localized): Image {
   return { src: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, width: 1280, height: 720, alt };
 }
 
-const ROLE_VIDEO: Localized = { fr: "Tournage, montage", en: "Filming, editing" };
+/** Rémi gère chaque projet de A à Z. */
+const ROLE_VIDEO: Localized = {
+  fr: "Conception, réalisation, tournage, montage, étalonnage, motion design",
+  en: "Concept, direction, filming, editing, colour grading, motion design",
+};
 
 // L'ordre du tableau est l'ordre d'affichage.
 export const projects: Project[] = [
