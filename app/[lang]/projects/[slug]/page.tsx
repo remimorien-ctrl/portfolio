@@ -100,6 +100,7 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/project
               width={img.width}
               height={img.height}
               sizes="(max-width: 700px) 100vw, 50vw"
+              unoptimized
             />
           ))}
         </div>
