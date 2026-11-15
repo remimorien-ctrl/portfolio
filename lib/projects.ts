@@ -210,6 +210,32 @@ export const projects: Project[] = [
     cover: ytCover("cPlyNpOpCk8", { fr: "Maison rénovée", en: "Renovated house" }),
   },
   {
+    slug: "artitour",
+    title: { fr: "ArtiTour", en: "ArtiTour" },
+    category: "video",
+    year: 2025,
+    client: "ArtiBox",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Les rencontres entre artisans et donneurs d'ordres ArtiBox, de ville en ville, en format vertical.",
+      en: "ArtiBox meet-ups between tradespeople and contractors, city by city, in vertical format.",
+    },
+    description: {
+      fr: [
+        "Couverture des étapes de l'ArtiTour, la tournée qui présente la plateforme ArtiBox aux artisans locaux : ambiance, témoignages et moments d'échange, montés en formats courts pour les réseaux sociaux.",
+      ],
+      en: [
+        "Coverage of the ArtiTour, the roadshow introducing the ArtiBox platform to local tradespeople: atmosphere, testimonials and networking moments, cut into short formats for social media.",
+      ],
+    },
+    videos: [
+      yt("wgLBiQ0QUv8", { vertical: true, label: { fr: "Annecy", en: "Annecy" } }),
+      yt("0Lh1PdnN8bQ", { vertical: true, label: { fr: "Chartres", en: "Chartres" } }),
+      yt("212tTs6Zryw", { vertical: true, label: { fr: "Bordeaux", en: "Bordeaux" } }),
+    ],
+    cover: ytCover("wgLBiQ0QUv8", { fr: "ArtiTour à Annecy", en: "ArtiTour in Annecy" }),
+  },
+  {
     slug: "franchising-belgium-2026",
     title: { fr: "Franchising Belgium 2026", en: "Franchising Belgium 2026" },
     category: "video",
@@ -228,6 +254,24 @@ export const projects: Project[] = [
     cover: ytCover("9ouREFv4EfA", { fr: "Stand Avenir Rénovations", en: "Avenir Rénovations booth" }),
   },
   {
+    slug: "franchise-expo-paris-2026",
+    title: { fr: "Franchise Expo Paris 2026", en: "Franchise Expo Paris 2026" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Quatre jours de salon à la porte de Versailles, résumés en deux minutes et demie.",
+      en: "Four days at the Paris franchise fair, summed up in two and a half minutes.",
+    },
+    description: {
+      fr: ["Captation sur le stand pendant tout le salon et montage du film bilan : rencontres avec les porteurs de projet, échanges avec l'équipe et chiffres clés de l'événement."],
+      en: ["Filming on the booth throughout the fair and editing the recap film: meetings with prospective franchisees, the team at work and the event's key figures."],
+    },
+    video: yt("gvfeBfkkzY8"),
+    cover: ytCover("gvfeBfkkzY8", { fr: "Franchise Expo Paris", en: "Franchise Expo Paris" }),
+  },
+  {
     slug: "bref-entreprendre-seul",
     title: { fr: "Bref. J'ai essayé d'entreprendre seul", en: "Bref. I tried to go it alone" },
     category: "video",
@@ -244,6 +288,42 @@ export const projects: Project[] = [
     },
     video: yt("urMrgJgsvWA"),
     cover: ytCover("urMrgJgsvWA", { fr: "Bref. J'ai essayé d'entreprendre seul", en: "Bref. I tried to go it alone" }),
+  },
+  {
+    slug: "team-building-2026",
+    title: { fr: "Olympiades – Team Building 2026", en: "Olympics – Team Building 2026" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Six équipes, une coupe et un réseau soudé : le film des Olympiades internes.",
+      en: "Six teams, one trophy and a close-knit network: the in-house Olympics film.",
+    },
+    description: {
+      fr: ["Une journée de compétitions sportives entre collaborateurs, filmée au plus près de l'action, avec un montage rythmé qui met en avant l'entraide et l'esprit d'équipe."],
+      en: ["A day of sports challenges between colleagues, filmed close to the action and cut at a fast pace to highlight teamwork and team spirit."],
+    },
+    video: yt("FJoqlLjhd8M"),
+    cover: ytCover("FJoqlLjhd8M", { fr: "Olympiades Avenir Rénovations", en: "Avenir Rénovations Olympics" }),
+  },
+  {
+    slug: "en-avant-lequipe-animateurs",
+    title: { fr: "En avant l'équipe ! – Les animateurs", en: "En avant l'équipe ! – The network coaches" },
+    category: "video",
+    year: 2023,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Premier épisode d'une websérie qui présente les équipes du siège, ici les animateurs réseau.",
+      en: "The first episode of a web series introducing the headquarters teams, starting with the network coaches.",
+    },
+    description: {
+      fr: ["Interviews et images de terrain pour montrer le rôle des animateurs qui accompagnent les franchisés au quotidien."],
+      en: ["Interviews and field footage showing the role of the coaches who support franchisees day to day."],
+    },
+    video: yt("byCirbWxnLU"),
+    cover: ytCover("byCirbWxnLU", { fr: "Les animateurs réseau", en: "The network coaches" }),
   },
   {
     slug: "facecam-entreprendre",
