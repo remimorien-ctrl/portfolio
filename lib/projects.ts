@@ -84,7 +84,7 @@ function album(slug: keyof typeof albums, name: Localized): { cover: Image; gall
   return { cover: imgs[0], gallery: imgs.slice(1) };
 }
 
-export const projects: Project[] = [
+const allProjects: Project[] = [
   {
     slug: "24h-chrono-kevin-louis",
     title: { fr: "24h Chrono – Kévin Louis", en: "24h Chrono – Kévin Louis" },
@@ -465,6 +465,38 @@ export const projects: Project[] = [
     ...album("saint-malo", { fr: "Saint-Malo", en: "Saint-Malo" }),
   },
 ];
+
+/** Ordre d'affichage (accueil, navigation précédent / suivant) : vidéos et photos en alternance. */
+const DISPLAY_ORDER = [
+  "24h-chrono-kevin-louis",
+  "convention-2026-marrakech",
+  "naissance-artibox",
+  "mariage-samira-yacine",
+  "soyons-franchises",
+  "mais-cest-qui",
+  "convention-2024-paris",
+  "realisations-chantiers",
+  "artitour",
+  "salon-du-bourget",
+  "24h-chrono-antoine-meteyer",
+  "avant-premiere-artibox",
+  "franchising-belgium-2026",
+  "franchise-expo-paris-2026",
+  "portraits-studio",
+  "facecam-entreprendre",
+  "convention-2023-10-ans",
+  "bref-entreprendre-seul",
+  "team-building-2026",
+  "saint-malo",
+  "en-avant-lequipe-animateurs",
+];
+
+const rank = (slug: string) => {
+  const i = DISPLAY_ORDER.indexOf(slug);
+  return i === -1 ? DISPLAY_ORDER.length : i;
+};
+
+export const projects: Project[] = [...allProjects].sort((a, b) => rank(a.slug) - rank(b.slug));
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
