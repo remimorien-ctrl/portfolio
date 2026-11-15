@@ -8,8 +8,10 @@ type GalleryImage = { src: string; width: number; height: number; alt: string };
 
 type Labels = { open: string; close: string; previous: string; next: string };
 
-/** Galerie en colonnes ; le plein écran est rendu dans <body> pour passer au-dessus de tout le site.
- * Galerie en colonnes ; un clic ouvre la photo en plein écran (flèches, Échap, glisser au doigt). */
+/**
+ * Galerie en colonnes ; un clic ouvre la photo en plein écran (flèches, Échap, glisser au doigt).
+ * Le plein écran est rendu dans <body> pour passer au-dessus de tout le site.
+ */
 export function Gallery({
   images,
   labels,
