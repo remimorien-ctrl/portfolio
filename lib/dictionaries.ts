@@ -49,6 +49,12 @@ const fr = {
     next: "Projet suivant",
     back: "Tous les projets",
   },
+  gallery: {
+    open: "Agrandir la photo",
+    close: "Fermer",
+    previous: "Photo précédente",
+    next: "Photo suivante",
+  },
   footer: {
     rights: "Tous droits réservés.",
   },
@@ -105,6 +111,12 @@ const en: Dictionary = {
     previous: "Previous project",
     next: "Next project",
     back: "All projects",
+  },
+  gallery: {
+    open: "Enlarge photo",
+    close: "Close",
+    previous: "Previous photo",
+    next: "Next photo",
   },
   footer: {
     rights: "All rights reserved.",

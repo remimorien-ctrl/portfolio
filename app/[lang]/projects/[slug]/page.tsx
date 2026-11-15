@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Gallery } from "@/components/Gallery";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { getDictionary } from "@/lib/dictionaries";
 import { alternates, getLang, href } from "@/lib/i18n";
@@ -91,19 +92,10 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/project
       {project.description?.[lang].map((paragraph, i) => <p key={i}>{paragraph}</p>)}
 
       {project.gallery && (
-        <div className="gallery">
-          {project.gallery.map((img) => (
-            <Image
-              key={img.src}
-              src={img.src}
-              alt={img.alt[lang]}
-              width={img.width}
-              height={img.height}
-              sizes="(max-width: 700px) 100vw, 50vw"
-              unoptimized
-            />
-          ))}
-        </div>
+        <Gallery
+          images={project.gallery.map((img) => ({ ...img, alt: img.alt[lang] }))}
+          labels={dict.gallery}
+        />
       )}
 
       {project.credits && (

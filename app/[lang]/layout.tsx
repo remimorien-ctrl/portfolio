@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
       locale: lang === "fr" ? "fr_FR" : "en_US",
       type: "website",
     },
+    twitter: { card: "summary_large_image" },
   };
 }
 

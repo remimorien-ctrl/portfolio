@@ -10,10 +10,15 @@ export const categoryLabels: Record<ProjectCategory, Localized> = {
   motion: { fr: "Motion design", en: "Motion design" },
 };
 
-/** Vidéo hébergée sur YouTube ou Vimeo : seul l'identifiant est stocké. */
+/**
+ * Vidéo hébergée sur YouTube ou Vimeo (seul l'identifiant est stocké),
+ * ou fichier servi par le site lui-même ("file" : `id` = chemin dans /public).
+ */
 export type Video = {
-  provider: "youtube" | "vimeo";
+  provider: "youtube" | "vimeo" | "file";
   id: string;
+  /** Image affichée avant la lecture (vidéos "file" uniquement). */
+  poster?: string;
   /** Format vertical 9:16 (Shorts, Reels). */
   vertical?: boolean;
   /** Légende affichée sous la vidéo quand un projet en contient plusieurs. */
@@ -465,6 +470,39 @@ const allProjects: Project[] = [
     },
     ...album("saint-malo", { fr: "Saint-Malo", en: "Saint-Malo" }),
   },
+  // ——— Motion design ———
+  {
+    slug: "generique-avenir-tv",
+    title: { fr: "Générique · Avenir TV", en: "Opening titles · Avenir TV" },
+    category: "motion",
+    year: 2025,
+    client: "Avenir Rénovations",
+    role: {
+      fr: "Motion design, animation du logo, photos des intervenants, montage",
+      en: "Motion design, logo animation, speaker portraits, editing",
+    },
+    summary: {
+      fr: "Générique de l'émission interne Avenir TV : animation du logo et présentation rythmée des intervenants.",
+      en: "Opening titles for the in-house show Avenir TV: logo animation and a rhythmic introduction of the speakers.",
+    },
+    description: {
+      fr: [
+        "Conçu et animé sous After Effects, du logo animé aux cartons typographiques calés sur la musique.",
+        "J'ai aussi photographié et détouré chaque intervenant pour leurs cartes de présentation, déclinées ensuite en intros individuelles.",
+      ],
+      en: [
+        "Designed and animated in After Effects, from the animated logo to typographic cards cut to the music.",
+        "I also photographed and cut out each speaker for their introduction cards, later turned into individual intros.",
+      ],
+    },
+    video: { provider: "file", id: "/motion/generique-avenir-tv.mp4", poster: "/motion/generique-avenir-tv.webp" },
+    cover: {
+      src: "/motion/generique-avenir-tv.webp",
+      width: 1920,
+      height: 1080,
+      alt: { fr: "Générique Avenir TV", en: "Avenir TV opening titles" },
+    },
+  },
 ];
 
 /** Ordre d'affichage (accueil, navigation précédent / suivant) : vidéos et photos en alternance. */
@@ -475,6 +513,7 @@ const DISPLAY_ORDER = [
   "mariage-samira-yacine",
   "soyons-franchises",
   "mais-cest-qui",
+  "generique-avenir-tv",
   "convention-2024-paris",
   "realisations-chantiers",
   "artitour",
