@@ -57,6 +57,11 @@ function ytCover(id: string, alt: Localized): Image {
   return { src: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, width: 1280, height: 720, alt };
 }
 
+/** Miniature verticale d'un Short YouTube (9:16) : la vignette du projet s'affiche alors en portrait. */
+function ytVerticalCover(id: string, alt: Localized, size: { width: number; height: number } = { width: 948, height: 1687 }): Image {
+  return { src: `https://i.ytimg.com/vi/${id}/oardefault.jpg`, ...size, alt };
+}
+
 /** Rémi gère chaque projet de A à Z. */
 const ROLE_VIDEO: Localized = {
   fr: "Conception, réalisation, tournage, montage, étalonnage, motion design",
@@ -134,7 +139,7 @@ export const projects: Project[] = [
       yt("MRCvNmf3FNY", { vertical: true, label: { fr: "Alizée, 5 mois après son lancement", en: "Alizée, five months in" } }),
       yt("sfNazWBHiqI", { vertical: true, label: { fr: "Florent Dias, premier franchisé au Luxembourg", en: "Florent Dias, first franchisee in Luxembourg" } }),
     ],
-    cover: ytCover("MRCvNmf3FNY", { fr: "Portrait d'Alizée", en: "Portrait of Alizée" }),
+    cover: ytVerticalCover("MRCvNmf3FNY", { fr: "Portrait d'Alizée", en: "Portrait of Alizée" }),
   },
   {
     slug: "24h-chrono-antoine-meteyer",
@@ -181,7 +186,7 @@ export const projects: Project[] = [
       yt("MpOZI6Nq3kk", { vertical: true, label: { fr: "Laurent, référent technique", en: "Laurent, technical lead" } }),
       yt("56qR0MI7DRs", { vertical: true, label: { fr: "Sabrina, traffic manager SEA", en: "Sabrina, SEA traffic manager" } }),
     ],
-    cover: ytCover("MpOZI6Nq3kk", { fr: "Portrait de Laurent", en: "Portrait of Laurent" }),
+    cover: ytVerticalCover("MpOZI6Nq3kk", { fr: "Portrait de Laurent", en: "Portrait of Laurent" }),
   },
   {
     slug: "realisations-chantiers",
@@ -207,7 +212,7 @@ export const projects: Project[] = [
       yt("algKvQ-8YQw", { vertical: true, label: { fr: "L'appartement de Fabien", en: "Fabien's apartment" } }),
       yt("C5Mtv0WjWKM", { vertical: true, label: { fr: "Chez Anne-Élise, près de Bordeaux", en: "Anne-Élise's home, near Bordeaux" } }),
     ],
-    cover: ytCover("cPlyNpOpCk8", { fr: "Maison rénovée", en: "Renovated house" }),
+    cover: ytVerticalCover("cPlyNpOpCk8", { fr: "Maison rénovée", en: "Renovated house" }),
   },
   {
     slug: "artitour",
@@ -233,7 +238,7 @@ export const projects: Project[] = [
       yt("0Lh1PdnN8bQ", { vertical: true, label: { fr: "Chartres", en: "Chartres" } }),
       yt("212tTs6Zryw", { vertical: true, label: { fr: "Bordeaux", en: "Bordeaux" } }),
     ],
-    cover: ytCover("wgLBiQ0QUv8", { fr: "ArtiTour à Annecy", en: "ArtiTour in Annecy" }),
+    cover: ytVerticalCover("wgLBiQ0QUv8", { fr: "ArtiTour à Annecy", en: "ArtiTour in Annecy" }, { width: 1080, height: 1920 }),
   },
   {
     slug: "franchising-belgium-2026",
@@ -337,7 +342,7 @@ export const projects: Project[] = [
       en: "A short, direct face-to-camera format for social media.",
     },
     video: yt("GIfSHi-37lQ", { vertical: true }),
-    cover: ytCover("GIfSHi-37lQ", { fr: "Face caméra", en: "Face to camera" }),
+    cover: ytVerticalCover("GIfSHi-37lQ", { fr: "Face caméra", en: "Face to camera" }),
   },
 ];
 

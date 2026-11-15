@@ -4,8 +4,12 @@ import { href, type Locale } from "@/lib/i18n";
 import type { LocalizedProject } from "@/lib/projects";
 
 export function ProjectCard({ project, lang }: { project: LocalizedProject; lang: Locale }) {
+  const vertical = !!project.cover && project.cover.height > project.cover.width;
   return (
-    <Link href={href(lang, `/projects/${project.slug}`)} className="project-card">
+    <Link
+      href={href(lang, `/projects/${project.slug}`)}
+      className={vertical ? "project-card project-card-vertical" : "project-card"}
+    >
       <div className="project-card-media">
         {project.cover ? (
           <Image
@@ -13,7 +17,7 @@ export function ProjectCard({ project, lang }: { project: LocalizedProject; lang
             alt={project.cover.alt}
             width={project.cover.width}
             height={project.cover.height}
-            sizes="(max-width: 700px) 100vw, 60vw"
+            sizes={vertical ? "(max-width: 700px) 100vw, 35vw" : "(max-width: 700px) 100vw, 60vw"}
           />
         ) : (
           <div className="cover-placeholder" />
