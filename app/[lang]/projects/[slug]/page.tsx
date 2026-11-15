@@ -36,6 +36,7 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/project
   const dict = getDictionary(lang);
   const { previous, next } = getAdjacentProjects(project.slug);
   const title = project.title[lang];
+  const videos = project.videos ?? (project.video ? [project.video] : []);
 
   return (
     <article className="container project">
@@ -68,8 +69,12 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/project
         )}
       </dl>
 
-      {project.video ? (
-        <VideoEmbed video={project.video} title={title} />
+      {videos.length > 0 ? (
+        <div className={videos.length > 1 ? "video-list" : undefined}>
+          {videos.map((v) => (
+            <VideoEmbed key={v.id} video={v} title={v.label ? `${title} – ${v.label[lang]}` : title} caption={videos.length > 1 ? v.label?.[lang] : undefined} />
+          ))}
+        </div>
       ) : (
         project.cover && (
           <Image

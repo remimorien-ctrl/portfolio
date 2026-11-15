@@ -961,6 +961,33 @@ h3 {
   background: var(--encre-3);
 }
 
+.video-embed-vertical {
+  aspect-ratio: 9 / 16;
+  max-width: 360px;
+  margin-inline: auto;
+}
+
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.video-list .video-embed {
+  margin-bottom: 12px;
+}
+
+.video-figure {
+  margin: 0;
+}
+
+.video-figure figcaption {
+  font-size: 13px;
+  color: var(--fumee);
+  text-align: center;
+}
+
 .video-embed iframe {
   position: absolute;
   inset: 0;

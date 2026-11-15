@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
     globalNotFound: true,
   },
   images: {
-    // Images d'exemple des projets (à retirer quand les vraies images seront en place).
-    remotePatterns: [new URL("https://picsum.photos/**")],
+    // Miniatures YouTube utilisées comme couvertures de projets.
+    remotePatterns: [new URL("https://i.ytimg.com/vi/**")],
   },
   async redirects() {
     // "/" → langue par défaut (defaultLocale dans lib/i18n.ts).

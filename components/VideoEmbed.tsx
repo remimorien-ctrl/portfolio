@@ -5,9 +5,9 @@ const embedUrl: Record<Video["provider"], (id: string) => string> = {
   vimeo: (id) => `https://player.vimeo.com/video/${id}?dnt=1`,
 };
 
-export function VideoEmbed({ video, title }: { video: Video; title: string }) {
-  return (
-    <div className="video-embed">
+export function VideoEmbed({ video, title, caption }: { video: Video; title: string; caption?: string }) {
+  const embed = (
+    <div className={video.vertical ? "video-embed video-embed-vertical" : "video-embed"}>
       <iframe
         src={embedUrl[video.provider](video.id)}
         title={title}
@@ -16,5 +16,12 @@ export function VideoEmbed({ video, title }: { video: Video; title: string }) {
         allowFullScreen
       />
     </div>
+  );
+  if (!caption) return embed;
+  return (
+    <figure className="video-figure">
+      {embed}
+      <figcaption className="mono">{caption}</figcaption>
+    </figure>
   );
 }

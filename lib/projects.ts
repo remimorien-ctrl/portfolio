@@ -13,6 +13,10 @@ export const categoryLabels: Record<ProjectCategory, Localized> = {
 export type Video = {
   provider: "youtube" | "vimeo";
   id: string;
+  /** Format vertical 9:16 (Shorts, Reels). */
+  vertical?: boolean;
+  /** Légende affichée sous la vidéo quand un projet en contient plusieurs. */
+  label?: Localized;
 };
 
 export type Image = {
@@ -37,71 +41,220 @@ export type Project = {
   featured?: boolean;
   cover?: Image;
   video?: Video;
+  /** Plusieurs vidéos (série, épisodes) : remplace `video`. */
+  videos?: Video[];
   gallery?: Image[];
   credits?: { role: Localized; name: string }[];
 };
 
-// Image d'exemple aléatoire (Lorem Picsum), le temps d'avoir les vrais visuels.
-function exampleImage(seed: string, width = 1600, height = 1000): Image {
-  return {
-    src: `https://picsum.photos/seed/${seed}/${width}/${height}`,
-    width,
-    height,
-    alt: { fr: "Image d'exemple", en: "Placeholder image" },
-  };
+/** Vidéo YouTube. */
+function yt(id: string, opts: { vertical?: boolean; label?: Localized } = {}): Video {
+  return { provider: "youtube", id, ...opts };
 }
 
-function exampleProject(
-  slug: string,
-  category: ProjectCategory,
-  year: number,
-  title: Localized,
-  summary: Localized,
-): Project {
-  return {
-    slug,
-    title,
-    category,
-    year,
-    client: "Client",
-    role: { fr: "Réalisation, montage", en: "Direction, editing" },
-    summary,
-    description: {
-      fr: ["Texte détaillé du projet : contexte, intention, réalisation."],
-      en: ["Detailed project text: context, intent, execution."],
-    },
-    cover: exampleImage(slug),
-    gallery: category === "photo" ? [1, 2, 3, 4].map((i) => exampleImage(`${slug}-${i}`, 1200, 1500)) : undefined,
-  };
+/** Miniature YouTube (1280 × 720) en attendant des visuels maison. */
+function ytCover(id: string, alt: Localized): Image {
+  return { src: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, width: 1280, height: 720, alt };
 }
 
-// Projets d'exemple avec images aléatoires, à remplacer par les vrais projets.
+const ROLE_VIDEO: Localized = { fr: "Tournage, montage", en: "Filming, editing" };
+
 // L'ordre du tableau est l'ordre d'affichage.
 export const projects: Project[] = [
-  exampleProject("film-de-marque", "video", 2026,
-    { fr: "Film de marque", en: "Brand film" },
-    { fr: "Un film de 90 secondes pour une marque de mode parisienne.", en: "A 90-second film for a Paris fashion brand." }),
-  exampleProject("aftermovie-festival", "video", 2025,
-    { fr: "Aftermovie de festival", en: "Festival aftermovie" },
-    { fr: "Trois jours de tournage multicam, montage livré en 72 h.", en: "Three days of multicam shooting, edit delivered in 72 h." }),
-  exampleProject("portraits-artistes", "photo", 2025,
-    { fr: "Portraits d'artistes", en: "Artist portraits" },
-    { fr: "Une série de portraits en lumière naturelle.", en: "A series of natural-light portraits." }),
-  exampleProject("habillage-anime", "motion", 2025,
-    { fr: "Habillage animé", en: "Motion package" },
-    { fr: "Génériques et titres animés pour une série web.", en: "Animated titles and openers for a web series." }),
-  exampleProject("concert-live", "photo", 2024,
-    { fr: "Concert live", en: "Live concert" },
-    { fr: "Couverture photo d'une tournée de concerts.", en: "Photo coverage of a concert tour." }),
-  exampleProject("clip-musical", "video", 2024,
-    { fr: "Clip musical", en: "Music video" },
-    { fr: "Clip tourné en une nuit dans les rues de Paris.", en: "A music video shot in one night in the streets of Paris." }),
-  exampleProject("logo-anime", "motion", 2024,
-    { fr: "Logo animé", en: "Logo animation" },
-    { fr: "Animation de logo pour une agence de communication.", en: "Logo animation for a communications agency." }),
-  exampleProject("reportage-food", "photo", 2023,
-    { fr: "Reportage food", en: "Food story" },
-    { fr: "Photos de plats et d'équipe pour un restaurant.", en: "Dish and team photos for a restaurant." }),
+  {
+    slug: "24h-chrono-kevin-louis",
+    title: { fr: "24h Chrono – Kévin Louis", en: "24h Chrono – Kévin Louis" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Une journée entière dans la peau d'un franchisé en Alsace, à la tête de deux agences.",
+      en: "A full day in the shoes of a franchisee in Alsace who runs two agencies.",
+    },
+    description: {
+      fr: [
+        "Épisode de la série « 24h Chrono, dans la peau d'un franchisé » : un format documentaire d'une trentaine de minutes qui suit Kévin Louis du premier rendez-vous client jusqu'au soir, entre chantiers, équipe et gestion de ses deux agences.",
+      ],
+      en: [
+        "An episode of the “24h Chrono” series: a 30-minute documentary format following Kévin Louis from his first client meeting until the evening, between building sites, his team and running two agencies.",
+      ],
+    },
+    featured: true,
+    video: yt("j7XPq2DYCH4"),
+    cover: ytCover("j7XPq2DYCH4", { fr: "Kévin Louis sur un chantier", en: "Kévin Louis on a building site" }),
+  },
+  {
+    slug: "naissance-artibox",
+    title: { fr: "La naissance d'ArtiBox", en: "The birth of ArtiBox" },
+    category: "video",
+    year: 2024,
+    client: "ArtiBox · Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Film documentaire sur la création d'ArtiBox, la plateforme qui connecte artisans et entreprises du bâtiment.",
+      en: "A documentary about the making of ArtiBox, the platform connecting tradespeople and construction companies.",
+    },
+    description: {
+      fr: [
+        "Un documentaire d'une douzaine de minutes qui retrace l'histoire du projet, de sa genèse à son lancement : les défis rencontrés, les équipes qui l'ont porté et l'impact attendu sur le secteur du bâtiment.",
+      ],
+      en: [
+        "A twelve-minute documentary tracing the project from its genesis to its launch: the challenges, the teams behind it and its expected impact on the construction industry.",
+      ],
+    },
+    featured: true,
+    video: yt("1H4Jmd9ai7g"),
+    cover: ytCover("1H4Jmd9ai7g", { fr: "Documentaire ArtiBox", en: "ArtiBox documentary" }),
+  },
+  {
+    slug: "soyons-franchises",
+    title: { fr: "Soyons Franchisés", en: "Soyons Franchisés" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Série de portraits de franchisés au format vertical, pour les réseaux sociaux.",
+      en: "A series of vertical franchisee portraits for social media.",
+    },
+    description: {
+      fr: [
+        "Chaque épisode donne la parole à un entrepreneur du réseau : ses doutes au départ, ses premiers mois, ce qui a fait la différence. Interviews, plans d'illustration et montage rythmé pour Instagram, TikTok et YouTube Shorts.",
+      ],
+      en: [
+        "Each episode gives the floor to an entrepreneur from the network: early doubts, first months, what made the difference. Interviews, B-roll and punchy editing for Instagram, TikTok and YouTube Shorts.",
+      ],
+    },
+    videos: [
+      yt("MRCvNmf3FNY", { vertical: true, label: { fr: "Alizée, 5 mois après son lancement", en: "Alizée, five months in" } }),
+      yt("sfNazWBHiqI", { vertical: true, label: { fr: "Florent Dias, premier franchisé au Luxembourg", en: "Florent Dias, first franchisee in Luxembourg" } }),
+    ],
+    cover: ytCover("MRCvNmf3FNY", { fr: "Portrait d'Alizée", en: "Portrait of Alizée" }),
+  },
+  {
+    slug: "24h-chrono-antoine-meteyer",
+    title: { fr: "24h Chrono – Antoine Meteyer", en: "24h Chrono – Antoine Meteyer" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Une journée avec un franchisé entre ses agences d'Angoulême et de Guéret.",
+      en: "A day with a franchisee between his agencies in Angoulême and Guéret.",
+    },
+    description: {
+      fr: [
+        "Un autre épisode de « 24h Chrono » : 25 minutes de documentaire au plus près du quotidien d'Antoine Meteyer, d'une agence à l'autre.",
+      ],
+      en: [
+        "Another “24h Chrono” episode: 25 minutes of documentary close to Antoine Meteyer's daily life, from one agency to the next.",
+      ],
+    },
+    video: yt("6JiqYw4QPfs"),
+    cover: ytCover("6JiqYw4QPfs", { fr: "Antoine Meteyer", en: "Antoine Meteyer" }),
+  },
+  {
+    slug: "mais-cest-qui",
+    title: { fr: "Mais c'est qui ?", en: "Mais c'est qui ?" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Série verticale qui présente les visages du siège, un collaborateur à la fois.",
+      en: "A vertical series introducing the people at headquarters, one at a time.",
+    },
+    description: {
+      fr: [
+        "Un format court et incarné pour faire connaître les équipes de la tête de réseau : interview sur fond coloré, habillage graphique et plans de situation.",
+      ],
+      en: [
+        "A short, personal format to introduce the headquarters teams: interview on a coloured backdrop, graphic package and on-the-job shots.",
+      ],
+    },
+    videos: [
+      yt("MpOZI6Nq3kk", { vertical: true, label: { fr: "Laurent, référent technique", en: "Laurent, technical lead" } }),
+      yt("56qR0MI7DRs", { vertical: true, label: { fr: "Sabrina, traffic manager SEA", en: "Sabrina, SEA traffic manager" } }),
+    ],
+    cover: ytCover("MpOZI6Nq3kk", { fr: "Portrait de Laurent", en: "Portrait of Laurent" }),
+  },
+  {
+    slug: "realisations-chantiers",
+    title: { fr: "Réalisations chantiers", en: "Renovation showcases" },
+    category: "video",
+    year: 2025,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Visites de rénovations terminées, racontées par les clients, au format Reels et Shorts.",
+      en: "Tours of finished renovations, told by the clients, for Reels and Shorts.",
+    },
+    description: {
+      fr: [
+        "Des vidéos de style « Real Estate » : mouvements fluides au stabilisateur, lumière naturelle et témoignage du client pour mettre en valeur le résultat des travaux.",
+      ],
+      en: [
+        "Real estate-style videos: smooth gimbal moves, natural light and the client's own words to showcase the finished work.",
+      ],
+    },
+    videos: [
+      yt("cPlyNpOpCk8", { vertical: true, label: { fr: "Maison savoyarde, Annecy", en: "Savoyard house, Annecy" } }),
+      yt("algKvQ-8YQw", { vertical: true, label: { fr: "L'appartement de Fabien", en: "Fabien's apartment" } }),
+      yt("C5Mtv0WjWKM", { vertical: true, label: { fr: "Chez Anne-Élise, près de Bordeaux", en: "Anne-Élise's home, near Bordeaux" } }),
+    ],
+    cover: ytCover("cPlyNpOpCk8", { fr: "Maison rénovée", en: "Renovated house" }),
+  },
+  {
+    slug: "franchising-belgium-2026",
+    title: { fr: "Franchising Belgium 2026", en: "Franchising Belgium 2026" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Retour en images sur le salon de la franchise en Belgique et ses premiers résultats.",
+      en: "A recap of the Belgian franchise fair and its first results.",
+    },
+    description: {
+      fr: ["Couverture de l'événement et montage du bilan : ambiance du stand, rencontres avec les porteurs de projet et chiffres clés."],
+      en: ["Event coverage and recap edit: booth atmosphere, meetings with prospective franchisees and key figures."],
+    },
+    video: yt("9ouREFv4EfA"),
+    cover: ytCover("9ouREFv4EfA", { fr: "Stand Avenir Rénovations", en: "Avenir Rénovations booth" }),
+  },
+  {
+    slug: "bref-entreprendre-seul",
+    title: { fr: "Bref. J'ai essayé d'entreprendre seul", en: "Bref. I tried to go it alone" },
+    category: "video",
+    year: 2025,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Une fiction courte façon « Bref » sur les galères de l'entrepreneur solitaire.",
+      en: "A short fiction in the style of “Bref” about the struggles of going it alone.",
+    },
+    description: {
+      fr: ["Une minute, un rythme effréné et beaucoup d'autodérision : pas de clients, pas de visibilité, une montagne de paperasse… jusqu'à la rencontre avec le réseau."],
+      en: ["One minute, a frantic pace and plenty of self-mockery: no clients, no visibility, a mountain of paperwork… until he meets the network."],
+    },
+    video: yt("urMrgJgsvWA"),
+    cover: ytCover("urMrgJgsvWA", { fr: "Bref. J'ai essayé d'entreprendre seul", en: "Bref. I tried to go it alone" }),
+  },
+  {
+    slug: "facecam-entreprendre",
+    title: { fr: "FaceCam – Entreprendre, ce n'est pas pour moi ?", en: "FaceCam – Entrepreneurship isn't for me?" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Format face caméra pour les réseaux sociaux, court et direct.",
+      en: "A short, direct face-to-camera format for social media.",
+    },
+    video: yt("GIfSHi-37lQ", { vertical: true }),
+    cover: ytCover("GIfSHi-37lQ", { fr: "Face caméra", en: "Face to camera" }),
+  },
 ];
 
 export function getProject(slug: string): Project | undefined {
