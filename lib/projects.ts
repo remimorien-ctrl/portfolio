@@ -142,28 +142,6 @@ export const projects: Project[] = [
     cover: ytVerticalCover("MRCvNmf3FNY", { fr: "Portrait d'Alizée", en: "Portrait of Alizée" }),
   },
   {
-    slug: "24h-chrono-antoine-meteyer",
-    title: { fr: "24h Chrono – Antoine Meteyer", en: "24h Chrono – Antoine Meteyer" },
-    category: "video",
-    year: 2026,
-    client: "Avenir Rénovations",
-    role: ROLE_VIDEO,
-    summary: {
-      fr: "Une journée avec un franchisé entre ses agences d'Angoulême et de Guéret.",
-      en: "A day with a franchisee between his agencies in Angoulême and Guéret.",
-    },
-    description: {
-      fr: [
-        "Un autre épisode de « 24h Chrono » : 25 minutes de documentaire au plus près du quotidien d'Antoine Meteyer, d'une agence à l'autre.",
-      ],
-      en: [
-        "Another “24h Chrono” episode: 25 minutes of documentary close to Antoine Meteyer's daily life, from one agency to the next.",
-      ],
-    },
-    video: yt("6JiqYw4QPfs"),
-    cover: ytCover("6JiqYw4QPfs", { fr: "Antoine Meteyer", en: "Antoine Meteyer" }),
-  },
-  {
     slug: "mais-cest-qui",
     title: { fr: "Mais c'est qui ?", en: "Mais c'est qui ?" },
     category: "video",
@@ -213,6 +191,28 @@ export const projects: Project[] = [
       yt("C5Mtv0WjWKM", { vertical: true, label: { fr: "Chez Anne-Élise, près de Bordeaux", en: "Anne-Élise's home, near Bordeaux" } }),
     ],
     cover: ytVerticalCover("cPlyNpOpCk8", { fr: "Maison rénovée", en: "Renovated house" }),
+  },
+  {
+    slug: "24h-chrono-antoine-meteyer",
+    title: { fr: "24h Chrono – Antoine Meteyer", en: "24h Chrono – Antoine Meteyer" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Une journée avec un franchisé entre ses agences d'Angoulême et de Guéret.",
+      en: "A day with a franchisee between his agencies in Angoulême and Guéret.",
+    },
+    description: {
+      fr: [
+        "Un autre épisode de « 24h Chrono » : 25 minutes de documentaire au plus près du quotidien d'Antoine Meteyer, d'une agence à l'autre.",
+      ],
+      en: [
+        "Another “24h Chrono” episode: 25 minutes of documentary close to Antoine Meteyer's daily life, from one agency to the next.",
+      ],
+    },
+    video: yt("6JiqYw4QPfs"),
+    cover: ytCover("6JiqYw4QPfs", { fr: "Antoine Meteyer", en: "Antoine Meteyer" }),
   },
   {
     slug: "artitour",
@@ -277,6 +277,20 @@ export const projects: Project[] = [
     cover: ytCover("gvfeBfkkzY8", { fr: "Franchise Expo Paris", en: "Franchise Expo Paris" }),
   },
   {
+    slug: "facecam-entreprendre",
+    title: { fr: "FaceCam – Entreprendre, ce n'est pas pour moi ?", en: "FaceCam – Entrepreneurship isn't for me?" },
+    category: "video",
+    year: 2026,
+    client: "Avenir Rénovations",
+    role: ROLE_VIDEO,
+    summary: {
+      fr: "Format face caméra pour les réseaux sociaux, court et direct.",
+      en: "A short, direct face-to-camera format for social media.",
+    },
+    video: yt("GIfSHi-37lQ", { vertical: true }),
+    cover: ytVerticalCover("GIfSHi-37lQ", { fr: "Face caméra", en: "Face to camera" }),
+  },
+  {
     slug: "bref-entreprendre-seul",
     title: { fr: "Bref. J'ai essayé d'entreprendre seul", en: "Bref. I tried to go it alone" },
     category: "video",
@@ -329,20 +343,6 @@ export const projects: Project[] = [
     },
     video: yt("byCirbWxnLU"),
     cover: ytCover("byCirbWxnLU", { fr: "Les animateurs réseau", en: "The network coaches" }),
-  },
-  {
-    slug: "facecam-entreprendre",
-    title: { fr: "FaceCam – Entreprendre, ce n'est pas pour moi ?", en: "FaceCam – Entrepreneurship isn't for me?" },
-    category: "video",
-    year: 2026,
-    client: "Avenir Rénovations",
-    role: ROLE_VIDEO,
-    summary: {
-      fr: "Format face caméra pour les réseaux sociaux, court et direct.",
-      en: "A short, direct face-to-camera format for social media.",
-    },
-    video: yt("GIfSHi-37lQ", { vertical: true }),
-    cover: ytVerticalCover("GIfSHi-37lQ", { fr: "Face caméra", en: "Face to camera" }),
   },
 ];
 
