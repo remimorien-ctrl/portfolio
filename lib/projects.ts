@@ -312,6 +312,42 @@ const allProjects: Project[] = [
     cover: ytVerticalCover("GIfSHi-37lQ", { fr: "Face caméra", en: "Face to camera" }),
   },
   {
+    slug: "mariage-anais-valentin",
+    title: { fr: "Film de mariage · Anaïs & Valentin", en: "Wedding film · Anaïs & Valentin" },
+    category: "video",
+    year: 2025,
+    role: {
+      fr: "Réalisation, tournage, montage, étalonnage",
+      en: "Direction, filming, editing, colour grading",
+    },
+    summary: {
+      fr: "Le film complet de leur journée de mariage.",
+      en: "The full film of their wedding day.",
+    },
+    description: {
+      fr: ["Toute la journée racontée en un film de 35 minutes, pensé pour être revu en famille."],
+      en: ["The whole day told in a 35-minute film, made to be watched again with family."],
+    },
+    video: yt("814heXi7BVQ"),
+    cover: ytCover("814heXi7BVQ", { fr: "Mariage d'Anaïs et Valentin", en: "Anaïs and Valentin's wedding" }),
+  },
+  {
+    slug: "clip-use-me",
+    title: { fr: "Use Me · Clip danse", en: "Use Me · Dance video" },
+    category: "video",
+    year: 2026,
+    role: {
+      fr: "Réalisation, tournage, montage, étalonnage",
+      en: "Direction, filming, editing, colour grading",
+    },
+    summary: {
+      fr: "Un clip de danse sur « Use Me », avec Jade : 35 secondes calées sur la musique.",
+      en: "A dance video set to “Use Me”, with Jade: 35 seconds cut to the music.",
+    },
+    video: yt("MSXImrZvDUE"),
+    cover: ytCover("MSXImrZvDUE", { fr: "Clip danse Use Me avec Jade", en: "Use Me dance video with Jade" }),
+  },
+  {
     slug: "bref-entreprendre-seul",
     title: { fr: "Bref. J'ai essayé d'entreprendre seul", en: "Bref. I tried to go it alone" },
     category: "video",
@@ -509,8 +545,9 @@ const allProjects: Project[] = [
 const DISPLAY_ORDER = [
   "24h-chrono-kevin-louis",
   "convention-2026-marrakech",
-  "naissance-artibox",
+  "clip-use-me",
   "mariage-samira-yacine",
+  "naissance-artibox",
   "soyons-franchises",
   "mais-cest-qui",
   "generique-avenir-tv",
@@ -518,6 +555,7 @@ const DISPLAY_ORDER = [
   "realisations-chantiers",
   "artitour",
   "salon-du-bourget",
+  "mariage-anais-valentin",
   "24h-chrono-antoine-meteyer",
   "avant-premiere-artibox",
   "franchising-belgium-2026",
